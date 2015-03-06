@@ -51,7 +51,7 @@ public class MainMenu extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainMenu.this, ScreenSlidePagerActivity.class);
+                Intent i = new Intent(MainMenu.this, Settings.class);
                 startActivity(i);
                 finish();
             }
