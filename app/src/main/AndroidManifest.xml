@@ -20,6 +20,8 @@
         <activity
             android:name=".ScreenSlidePagerActivity"
             android:label="@string/title_activity_screen_slide_pager" >
+            android:name=".MainMenu"
+            android:label="@string/title_activity_main_menu" >
         </activity>
     </application>
 
