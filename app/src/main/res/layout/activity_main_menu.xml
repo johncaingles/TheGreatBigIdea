@@ -38,7 +38,8 @@
         android:layout_marginTop="54dp"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/kickoffbutton" />
+        android:background="@drawable/kickoffbutton"
+        android:clickable="true" />
 
     <ImageButton
         android:layout_width="165dip"
@@ -47,7 +48,8 @@
         android:adjustViewBounds="true"
         android:layout_below="@+id/imageButton"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/theoriesbutton" />
+        android:background="@drawable/theoriesbutton"
+        android:clickable="true" />
 
     <ImageButton
         android:layout_width="165dip"
@@ -57,6 +59,7 @@
         android:layout_below="@+id/imageButton2"
         android:layout_alignLeft="@+id/imageButton2"
         android:layout_alignStart="@+id/imageButton2"
-        android:background="@drawable/theconceptbutton" />
+        android:background="@drawable/definebutton"
+        android:clickable="true" />
 
 </RelativeLayout>
