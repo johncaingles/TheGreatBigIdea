@@ -1,6 +1,7 @@
 package com.example.john.thegreatbigidea;
 
 import android.content.Intent;
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,7 +11,7 @@ import android.widget.ImageButton;
 import android.view.View.OnClickListener;
 
 
-public class MainMenu extends ActionBarActivity {
+public class MainMenu extends Activity {
 
     private ImageButton kickOffBtn;
     private ImageButton theoriesBtn;
