@@ -19,7 +19,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:gravity="top|center" />
+        android:gravity="center" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -30,8 +30,8 @@
         android:clickable="false"
         android:maxHeight="100dp"
         android:longClickable="false"
-        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/title"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="125dp" />
+        android:layout_marginTop="40dp" />
 
 </RelativeLayout>
