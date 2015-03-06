@@ -1,17 +1,60 @@
 package com.example.john.thegreatbigidea;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.view.View.OnClickListener;
 
 
 public class MainMenu extends ActionBarActivity {
 
+    private ImageButton kickOffBtn;
+    private ImageButton theoriesBtn;
+    private ImageButton conceptBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        kickOffBtn = (ImageButton) findViewById(R.id.kickOffBtn);
+        theoriesBtn = (ImageButton) findViewById(R.id.theoriesBtn);
+        conceptBtn = (ImageButton) findViewById(R.id.conceptBtn);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        kickOffBtn.setOnClickListener (new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(MainMenu.this, ScreenSlidePagerActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        theoriesBtn.setOnClickListener (new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(MainMenu.this, ScreenSlidePagerActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        conceptBtn.setOnClickListener (new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(MainMenu.this, ScreenSlidePagerActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
     }
 
 
