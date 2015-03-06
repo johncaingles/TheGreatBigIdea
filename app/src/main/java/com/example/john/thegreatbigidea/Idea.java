@@ -5,6 +5,7 @@ package com.example.john.thegreatbigidea;
  */
 public class Idea
 {
+    private String id;
     private String name;
     private String category;
     private String imgurl;
@@ -25,5 +26,12 @@ public class Idea
     {
         return imgurl;
     }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public String getID() { return id; }
 
 }

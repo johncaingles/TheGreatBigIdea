@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 
 public class ScreenSlidePagerActivity extends FragmentActivity {
@@ -37,6 +39,8 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_slide);
 
+        getRandomIdeas();
+
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
@@ -48,7 +52,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         if (mPager.getCurrentItem() == 0) {
             // If the user is currently looking at the first step, allow the system to handle the
             // Back button. This calls finish() on this activity and pops the back stack.
-            super.onBackPressed();
+            mPager.setCurrentItem(numIdeas - 1);
         } else {
             // Otherwise, select the previous step.
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
@@ -57,17 +61,19 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
 
     public void getRandomIdeas() {
         ideasList = new ArrayList<Idea>();
-        ideasList.add(new Idea("Teddy", "Everyday Things", "1.JPG"));
-        ideasList.add(new Idea("Clock", "Everyday Things", "2.JPG"));
-        ideasList.add(new Idea("Water", "Everyday Things", "3.JPG"));
-        ideasList.add(new Idea("Sign", "Everyday Things", "4.JPG"));
-        ideasList.add(new Idea("Coffee", "Everyday Things", "5.JPG"));
-        ideasList.add(new Idea("Record Book", "Everyday Things", "6.JPG"));
-        ideasList.add(new Idea("David", "Peoples", "7.JPG"));
-        ideasList.add(new Idea("Angeline", "People", "8.JPG"));
-        ideasList.add(new Idea("Seaver", "People", "9.JPG"));
-        ideasList.add(new Idea("Electric Fan", "Everyday Things", "10.JPG"));
+        ideasList.add(new Idea("Teddy", "Everyday Things", "a"));
+        ideasList.add(new Idea("Clock", "Everyday Things", "b"));
+        ideasList.add(new Idea("Water", "Everyday Things", "c"));
+        ideasList.add(new Idea("Sign", "Everyday Things", "d"));
+        ideasList.add(new Idea("Coffee", "Everyday Things", "e"));
+        ideasList.add(new Idea("Record Book", "Everyday Things", "f"));
+        ideasList.add(new Idea("David", "Peoples", "g"));
+        ideasList.add(new Idea("Angeline", "People", "h"));
+        ideasList.add(new Idea("Seaver", "People", "i"));
+        ideasList.add(new Idea("Electric Fan", "Everyday Things", "j"));
         numIdeas = 10;
+        long seed = System.nanoTime();
+        Collections.shuffle(ideasList, new Random(seed));
     }
 
     /**
@@ -81,7 +87,11 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return new ScreenSlidePageFragment();
+            Bundle b1 = new Bundle();
+            b1.putString("image", ideasList.get(position).getImage());
+            ScreenSlidePageFragment frag = new ScreenSlidePageFragment();
+            frag.setArguments(b1);
+            return frag;
         }
 
         @Override
