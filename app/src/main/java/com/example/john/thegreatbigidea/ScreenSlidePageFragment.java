@@ -22,8 +22,8 @@ public class ScreenSlidePageFragment extends Fragment
                              Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         imageURL = bundle.getString("image");
-        View view = inflater.inflate(R.layout.fragment_screen_slide_page, container, false);
-        ImageView img= (ImageView) view.findViewById(R.id.image);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_screen_slide_page, container, false);
+        ImageView img= (ImageView) view.findViewById(R.id.ideaView);
 
         Resources res = getResources();
         int resID = res.getIdentifier(imageURL , "drawable", "com.example.john.thegreatbigidea");
@@ -34,9 +34,6 @@ public class ScreenSlidePageFragment extends Fragment
         img.setScaleType(ImageView.ScaleType.MATRIX);   //required
         matrix.postRotate((float) 90, pivX, pivY);
         img.setImageMatrix(matrix);*/
-
-        img.setRotation(90);
-
         return view;
     }
 }

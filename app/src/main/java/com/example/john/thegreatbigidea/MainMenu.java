@@ -20,12 +20,11 @@ public class MainMenu extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_menu);
         kickOffBtn = (ImageButton) findViewById(R.id.kickOffBtn);
         theoriesBtn = (ImageButton) findViewById(R.id.theoriesBtn);
         conceptBtn = (ImageButton) findViewById(R.id.conceptBtn);
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
 
         kickOffBtn.setOnClickListener (new OnClickListener() {
             @Override
@@ -41,7 +40,7 @@ public class MainMenu extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainMenu.this, ScreenSlidePagerActivity.class);
+                Intent i = new Intent(MainMenu.this, savedIdeas.class);
                 startActivity(i);
                 finish();
             }
