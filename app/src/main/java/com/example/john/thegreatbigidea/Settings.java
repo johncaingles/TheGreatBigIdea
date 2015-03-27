@@ -1,22 +1,33 @@
 package com.example.john.thegreatbigidea;
 
+
 import  android.support.v7.app.ActionBarActivity;
+
+import android.app.Activity;
+import android.content.Intent;
+
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 
 
-public class Settings extends ActionBarActivity {
+public class Settings extends Activity {
 
     private CheckBox peopleCb;
     private CheckBox everydayCb;
     private CheckBox entertainmentCb;
     private CheckBox educationCb;
     private CheckBox alronCb;
+    private Button backBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +39,18 @@ public class Settings extends ActionBarActivity {
         entertainmentCb = (CheckBox) findViewById(R.id.entertainmentCb);
         educationCb = (CheckBox) findViewById(R.id.educationCb);
         alronCb = (CheckBox) findViewById(R.id.alronCb);
+        backBtn = (Button) findViewById(R.id.button);
 
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(Settings.this, MainMenu.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         SharedPreferences settings = getSharedPreferences("Preferences", 0);
         boolean setting;
