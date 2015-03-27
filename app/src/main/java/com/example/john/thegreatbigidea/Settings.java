@@ -4,14 +4,110 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 
 public class Settings extends ActionBarActivity {
+
+    private CheckBox peopleCb;
+    private CheckBox everydayCb;
+    private CheckBox entertainmentCb;
+    private CheckBox educationCb;
+    private CheckBox alronCb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        peopleCb = (CheckBox) findViewById(R.id.peopleCb);
+        everydayCb = (CheckBox) findViewById(R.id.everydayCb);
+        entertainmentCb = (CheckBox) findViewById(R.id.entertainmentCb);
+        educationCb = (CheckBox) findViewById(R.id.educationCb);
+        alronCb = (CheckBox) findViewById(R.id.alronCb);
+
+
+        SharedPreferences settings = getSharedPreferences("Preferences", 0);
+        boolean setting;
+
+        setting = settings.getBoolean("peopleFilter", true);
+        peopleCb.setChecked(setting);
+
+        setting = settings.getBoolean("everydayFilter", true);
+        everydayCb.setChecked(setting);
+
+        setting = settings.getBoolean("entertainmentFilter", true);
+        entertainmentCb.setChecked(setting);
+
+        setting = settings.getBoolean("educationFilter", true);
+        educationCb.setChecked(setting);
+
+        setting = settings.getBoolean("alronFilter", true);
+        alronCb.setChecked(setting);
+
+        peopleCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                SharedPreferences settings = getSharedPreferences("Preferences", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("peopleFilter", isChecked);
+                editor.commit();
+            }
+        }
+        );
+
+        everydayCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                                @Override
+                                                public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                                                    SharedPreferences settings = getSharedPreferences("Preferences", 0);
+                                                    SharedPreferences.Editor editor = settings.edit();
+                                                    editor.putBoolean("everydayFilter", isChecked);
+                                                    editor.commit();
+                                                }
+                                            }
+        );
+
+        entertainmentCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                                @Override
+                                                public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                                                    SharedPreferences settings = getSharedPreferences("Preferences", 0);
+                                                    SharedPreferences.Editor editor = settings.edit();
+                                                    editor.putBoolean("entertainmentFilter", isChecked);
+                                                    editor.commit();
+                                                }
+                                            }
+        );
+
+        educationCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                                @Override
+                                                public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                                                    SharedPreferences settings = getSharedPreferences("Preferences", 0);
+                                                    SharedPreferences.Editor editor = settings.edit();
+                                                    editor.putBoolean("educationFilter", isChecked);
+                                                    editor.commit();
+                                                }
+                                            }
+        );
+
+        alronCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                                @Override
+                                                public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                                                    SharedPreferences settings = getSharedPreferences("Preferences", 0);
+                                                    SharedPreferences.Editor editor = settings.edit();
+                                                    editor.putBoolean("alronFilter", isChecked);
+                                                    editor.commit();
+                                                }
+                                            }
+        );
+
     }
 
 
