@@ -1,4 +1,5 @@
 package com.example.john.thegreatbigidea;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Random;
 
 
@@ -74,6 +76,31 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         numIdeas = 10;
         long seed = System.nanoTime();
         Collections.shuffle(ideasList, new Random(seed));
+        filterIdeas();
+    }
+
+    public void filterIdeas() {
+        SharedPreferences settings = getSharedPreferences("Preferences", 0);
+        boolean setting;
+        if (!settings.getBoolean("peopleFilter", true))
+            removeIdeas("People");
+        if (!settings.getBoolean("everydayFilter", true))
+            removeIdeas("Everyday Things");
+        if (!settings.getBoolean("entertainmentFilter", true))
+            removeIdeas("Entertainment");
+        if (!settings.getBoolean("educationFilter", true))
+            removeIdeas("Education");
+        if (!settings.getBoolean("alronFilter", true))
+            removeIdeas("Alron Senpai");
+    }
+
+    public void removeIdeas(String category){
+        Iterator<Idea> itr = ideasList.iterator();
+        while (itr.hasNext()) {
+            Idea id = itr.next();
+            if (id.getCategory().equals(category))
+                itr.remove();
+        }
     }
 
     /**
