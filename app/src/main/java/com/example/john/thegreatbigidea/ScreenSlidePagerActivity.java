@@ -1,4 +1,7 @@
 package com.example.john.thegreatbigidea;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -77,6 +80,21 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         long seed = System.nanoTime();
         Collections.shuffle(ideasList, new Random(seed));
         filterIdeas();
+        if (numIdeas == 0)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("No Images to Display");
+            builder.setMessage("There are no images to display. Add categories or check your network connection.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Intent i = new Intent(ScreenSlidePagerActivity.this, MainMenu.class);
+                    startActivity(i);
+                    finish();
+                }
+            });
+            builder.show();
+
+        }
     }
 
     public void filterIdeas() {
