@@ -67,7 +67,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         ideasList.add(new Idea("Sign", "Everyday Things", "d"));
         ideasList.add(new Idea("Coffee", "Everyday Things", "e"));
         ideasList.add(new Idea("Record Book", "Everyday Things", "f"));
-        ideasList.add(new Idea("David", "Peoples", "g"));
+        ideasList.add(new Idea("David", "People", "g"));
         ideasList.add(new Idea("Angeline", "People", "h"));
         ideasList.add(new Idea("Seaver", "People", "i"));
         ideasList.add(new Idea("Electric Fan", "Everyday Things", "j"));
