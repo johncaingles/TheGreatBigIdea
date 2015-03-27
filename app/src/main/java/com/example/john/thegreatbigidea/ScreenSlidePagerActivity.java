@@ -98,8 +98,10 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         Iterator<Idea> itr = ideasList.iterator();
         while (itr.hasNext()) {
             Idea id = itr.next();
-            if (id.getCategory().equals(category))
+            if (id.getCategory().equals(category)) {
                 itr.remove();
+                numIdeas--;
+            }
         }
     }
 

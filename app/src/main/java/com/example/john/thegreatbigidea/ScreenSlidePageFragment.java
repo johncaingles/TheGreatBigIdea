@@ -48,22 +48,22 @@ public class ScreenSlidePageFragment extends Fragment
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*String mtext = "";
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Image saved!");
-
-// Set up the input
+                builder.setMessage("Save the image with a note:\n");
+                // Set up the input
                 final EditText input;
-                input = new EditText(this);
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                input = new EditText(getActivity());
+                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 builder.setView(input);
 
-// Set up the buttons
+                // Set up the buttons
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mtext = input.getText().toString();
+                        String mtext = input.getText().toString();
+                        //setImageResource();
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -72,8 +72,7 @@ public class ScreenSlidePageFragment extends Fragment
                         dialog.cancel();
                     }
                 });
-
-                builder.show();*/
+                builder.show();
             }
         });
 
