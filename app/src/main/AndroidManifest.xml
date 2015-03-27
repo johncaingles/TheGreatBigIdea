@@ -37,7 +37,8 @@
         <activity
             android:name=".savedIdeas"
             android:label="@string/title_activity_saved_ideas"
-            android:parentActivityName=".MainMenu" >
+            android:parentActivityName=".MainMenu"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainMenu" />
