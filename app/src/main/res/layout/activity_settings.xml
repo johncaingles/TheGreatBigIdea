@@ -15,10 +15,11 @@
         android:textSize="25dp"
         android:paddingBottom="20dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/educationCb"
-        android:layout_alignParentLeft="true"
         android:checked="true"
-        android:enabled="true" />
+        android:enabled="true"
+        android:textColor="#ff34495e"
+        android:layout_below="@+id/peopleCb"
+        android:layout_alignParentLeft="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -28,10 +29,11 @@
         android:textSize="25dp"
         android:layout_alignParentStart="true"
         android:paddingBottom="20dp"
-        android:layout_below="@+id/everydayCb"
-        android:layout_alignParentLeft="true"
         android:checked="true"
-        android:enabled="true" />
+        android:enabled="true"
+        android:textColor="#ff34495e"
+        android:layout_below="@+id/educationCb"
+        android:layout_alignParentLeft="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -41,10 +43,11 @@
         android:textSize="25dp"
         android:layout_alignParentStart="true"
         android:paddingBottom="20dp"
-        android:layout_below="@+id/peopleCb"
-        android:layout_alignParentLeft="true"
         android:checked="true"
-        android:enabled="true" />
+        android:enabled="true"
+        android:textColor="#ff34495e"
+        android:layout_below="@+id/entertainmentCb"
+        android:layout_alignParentLeft="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -54,10 +57,11 @@
         android:textSize="25dp"
         android:layout_alignParentStart="true"
         android:paddingBottom="20dp"
-        android:layout_below="@+id/entertainmentCb"
-        android:layout_alignParentLeft="true"
         android:checked="true"
-        android:enabled="true" />
+        android:enabled="true"
+        android:textColor="#ff34495e"
+        android:layout_below="@+id/alronCb"
+        android:layout_alignParentLeft="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -67,11 +71,12 @@
         android:textSize="25dp"
         android:paddingBottom="20dp"
         android:checked="true"
-        android:layout_below="@+id/textView2"
+        android:enabled="true"
+        style="@style/AppTheme"
+        android:textColor="#ff34495e"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="85dp"
-        android:enabled="true" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,13 +84,14 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Categories"
         android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:textSize="40dp"
         android:paddingBottom="20dp"
         android:textColor="#ff2980b9"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="44dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,7 +99,35 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Define your filters"
         android:id="@+id/textView3"
+        android:textColor="#ff34495e"
         android:layout_below="@+id/textView2"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:background="@android:color/transparent"
+        android:shadowColor="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="visible"
+        android:enabled="true"
+        android:clickable="true"
+        android:textColor="#ff2980b9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="&lt;"
+        android:id="@+id/textView8"
+        android:textSize="40dp"
+        android:textColor="#ff2980b9"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
