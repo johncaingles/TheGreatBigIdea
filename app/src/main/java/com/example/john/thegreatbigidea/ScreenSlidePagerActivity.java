@@ -76,6 +76,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         numIdeas = 10;
         long seed = System.nanoTime();
         Collections.shuffle(ideasList, new Random(seed));
+        filterIdeas();
     }
 
     public void filterIdeas() {
