@@ -32,6 +32,4 @@ public class Idea
         return name;
     }
 
-    public String getID() { return id; }
-
 }

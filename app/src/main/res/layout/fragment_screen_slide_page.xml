@@ -29,6 +29,7 @@
         android:layout_height="100dip"
         android:id="@+id/imageButton"
         android:background="@drawable/savebutton"
+        android:scaleType="fitCenter"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

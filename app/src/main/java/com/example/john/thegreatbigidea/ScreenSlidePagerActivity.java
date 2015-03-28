@@ -76,7 +76,25 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         ideasList.add(new Idea("Angeline", "People", "h"));
         ideasList.add(new Idea("Seaver", "People", "i"));
         ideasList.add(new Idea("Electric Fan", "Everyday Things", "j"));
-        numIdeas = 10;
+        ideasList.add(new Idea("Jyra", "People", "k"));
+        ideasList.add(new Idea("Janica", "People", "l"));
+        ideasList.add(new Idea("Raisa", "People", "m"));
+        ideasList.add(new Idea("Mountain Dew", "Everyday Things", "n"));
+        ideasList.add(new Idea("Observe Silence", "Education", "o"));
+        ideasList.add(new Idea("MS Poster", "Education", "p"));
+        ideasList.add(new Idea("Gaming", "Entertainment", "q"));
+        ideasList.add(new Idea("Playing CS", "Entertainment", "r"));
+        ideasList.add(new Idea("More Games", "Entertainment", "s"));
+        ideasList.add(new Idea("Bag", "Everyday Things", "t"));
+        ideasList.add(new Idea("Bachini", "People", "u"));
+        ideasList.add(new Idea("Computers", "Education", "v"));
+        ideasList.add(new Idea("Microsoft Inno Center", "Education", "w"));
+        ideasList.add(new Idea("Pizza", "Everyday Things", "x"));
+        ideasList.add(new Idea("Seaver Again", "People", "y"));
+        ideasList.add(new Idea("Hazel", "People", "z"));
+        ideasList.add(new Idea("Alron", "Alron Senpai", "a1"));
+
+        numIdeas = 27;
         long seed = System.nanoTime();
         Collections.shuffle(ideasList, new Random(seed));
         filterIdeas();

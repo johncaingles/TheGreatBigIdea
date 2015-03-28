@@ -27,6 +27,7 @@ public class ScreenSlidePageFragment extends Fragment
     private String imageURL;
     private String name;
     private String category;
+    private ImageButton save;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +44,7 @@ public class ScreenSlidePageFragment extends Fragment
         Drawable drawable = res.getDrawable(resID );
         img.setImageDrawable(drawable);
 
-        ImageButton save = (ImageButton) view.findViewById(R.id.imageButton);
+        save = (ImageButton) view.findViewById(R.id.imageButton);
         Button button = (Button) view.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +55,7 @@ public class ScreenSlidePageFragment extends Fragment
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                save.setImageResource(R.drawable.savedbutton);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Image saved!");
                 builder.setMessage("Save the image with a note:\n");
@@ -77,7 +79,7 @@ public class ScreenSlidePageFragment extends Fragment
                         values.put("IDEA_IMAGE", imageURL);
                         values.put("IDEA_NOTE", mtext);
                         db.insert("SAVED_IDEAS", "IDEA_NOTE", values);
-                        //setImageResource();
+
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -89,6 +91,7 @@ public class ScreenSlidePageFragment extends Fragment
                 builder.show();
             }
         });
+
 
         return view;
     }

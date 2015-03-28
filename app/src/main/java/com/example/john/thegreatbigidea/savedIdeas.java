@@ -1,19 +1,25 @@
 package com.example.john.thegreatbigidea;
 
+import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Activity;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,12 +49,28 @@ public class savedIdeas extends Activity {
             });
 
         GridView gridView = (GridView)findViewById(R.id.gridView);
-        gridView.setAdapter(new MyAdapter(this));
+        final MyAdapter adapter = new MyAdapter(this);
+        gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id)
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(savedIdeas.this);
+                builder.setTitle(adapter.getItem(position).getName() + " Note");
+                builder.setMessage(adapter.getItem(position).getNote());
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+                builder.show();
+            }
+        });
     }
 
     private class MyAdapter extends BaseAdapter
     {
-        private List<Item> items = new ArrayList<Item>();
+        private List<SavedIdea> items = new ArrayList<SavedIdea>();
         private LayoutInflater inflater;
 
         public MyAdapter(Context context)
@@ -75,7 +97,7 @@ public class savedIdeas extends Activity {
             {
                 do {
                     Resources res = getResources();
-                    items.add(new Item(c.getString(1), res.getIdentifier(c.getString(3), "drawable", "com.example.john.thegreatbigidea")));
+                    items.add(new SavedIdea(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4)));
                 } while (c.moveToNext());
             }
             db.close();
@@ -94,7 +116,7 @@ public class savedIdeas extends Activity {
         }
 
         @Override
-        public Object getItem(int i)
+        public SavedIdea getItem(int i)
         {
             return items.get(i);
         }
@@ -102,7 +124,7 @@ public class savedIdeas extends Activity {
         @Override
         public long getItemId(int i)
         {
-            return items.get(i).drawableId;
+            return items.get(i).getID();
         }
 
         @Override
@@ -122,25 +144,15 @@ public class savedIdeas extends Activity {
             picture = (ImageView)v.getTag(R.id.picture);
             name = (TextView)v.getTag(R.id.text);
 
-            Item item = (Item)getItem(i);
+            SavedIdea item = (SavedIdea)getItem(i);
 
-            picture.setImageResource(item.drawableId);
-            name.setText(item.name);
+            picture.setImageResource(item.getDrawableID(getApplicationContext()));
+            name.setText(item.getName());
 
             return v;
         }
 
-        private class Item
-        {
-            final String name;
-            final int drawableId;
 
-            Item(String name, int drawableId)
-            {
-                this.name = name;
-                this.drawableId = drawableId;
-            }
-        }
     }
 
 
