@@ -86,9 +86,11 @@ public class ScreenSlidePageFragment extends Fragment
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
+                        save.setImageResource(R.drawable.savebutton);
                     }
                 });
                 builder.show();
+
             }
         });
 

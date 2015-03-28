@@ -95,8 +95,12 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         ideasList.add(new Idea("Seaver Again", "People", "y"));
         ideasList.add(new Idea("Hazel", "People", "z"));
         ideasList.add(new Idea("Alron", "Alron Senpai", "a1"));
+        ideasList.add(new Idea("Polar Express", "Entertainment", "quote1"));
+        ideasList.add(new Idea("Smile and Laugh", "Entertainment", "quote2"));
+        ideasList.add(new Idea("Home", "Entertainment", "quote3"));
+        ideasList.add(new Idea("Do Right", "Entertainment", "quote4"));
 
-        numIdeas = 27;
+        numIdeas = 31;
         long seed = System.nanoTime();
         Collections.shuffle(ideasList, new Random(seed));
         filterIdeas();
@@ -186,7 +190,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
             }
             else
             {
-                return 1;
+                return 0;
             }
         }
 
