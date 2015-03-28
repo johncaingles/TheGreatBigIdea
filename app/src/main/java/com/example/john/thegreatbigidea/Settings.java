@@ -45,7 +45,6 @@ public class Settings extends Activity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(Settings.this, MainMenu.class);
                 startActivity(i);
                 finish();

@@ -29,7 +29,7 @@ public class savedIdeas extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_ideas);
-        backBtn = (Button) findViewById(R.id.button);
+        backBtn = (Button) findViewById(R.id.button2);
 
         backBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -38,9 +38,7 @@ public class savedIdeas extends Activity {
                 startActivity(i);
                 finish();
             }
-
-
-            });
+         });
 
         GridView gridView = (GridView)findViewById(R.id.gridView);
         gridView.setAdapter(new MyAdapter(this));
