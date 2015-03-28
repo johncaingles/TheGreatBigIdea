@@ -2,6 +2,9 @@ package com.example.john.thegreatbigidea;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -52,11 +55,37 @@ public class savedIdeas extends Activity {
         {
             inflater = LayoutInflater.from(context);
 
+            IdeasDBHelper ideasDBHelper = new IdeasDBHelper(getApplicationContext());
+            SQLiteDatabase db = ideasDBHelper.getReadableDatabase();
+
+            String[] projection = {"IDEA_ID", "IDEA_NAME", "IDEA_CATEGORY", "IDEA_IMAGE", "IDEA_NOTE"};
+            String sortOrder = "IDEA_ID ASC";
+
+            Cursor c = db.query(
+                   "SAVED_IDEAS",  // The table to query
+                    projection,                               // The columns to return
+                    null,                                // The columns for the WHERE clause
+                    null,                            // The values for the WHERE clause
+                    null,                                     // don't group the rows
+                    null,                                     // don't filter by row groups
+                    sortOrder                                 // The sort order
+            );
+
+            if (c.moveToFirst())
+            {
+                do {
+                    Resources res = getResources();
+                    items.add(new Item(c.getString(1), res.getIdentifier(c.getString(3), "drawable", "com.example.john.thegreatbigidea")));
+                } while (c.moveToNext());
+            }
+            db.close();
+            /*
+
             items.add(new Item("Image 1", R.drawable.a));
             items.add(new Item("Image 2", R.drawable.b));
             items.add(new Item("Image 3", R.drawable.c));
             items.add(new Item("Image 4", R.drawable.d));
-            items.add(new Item("Image 5", R.drawable.e));
+            items.add(new Item("Image 5", R.drawable.e));*/
         }
 
         @Override

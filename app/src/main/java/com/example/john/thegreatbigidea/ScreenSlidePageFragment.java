@@ -2,9 +2,11 @@ package com.example.john.thegreatbigidea;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -23,12 +25,16 @@ import android.widget.ImageView;
 public class ScreenSlidePageFragment extends Fragment
 {
     private String imageURL;
+    private String name;
+    private String category;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         imageURL = bundle.getString("image");
+        name = bundle.getString("name");
+        category = bundle.getString("category");
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_screen_slide_page, container, false);
         ImageView img= (ImageView) view.findViewById(R.id.ideaView);
 
@@ -63,6 +69,14 @@ public class ScreenSlidePageFragment extends Fragment
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String mtext = input.getText().toString();
+                        IdeasDBHelper ideasDBHelper = new IdeasDBHelper(getActivity());
+                        SQLiteDatabase db = ideasDBHelper.getWritableDatabase();
+                        ContentValues values = new ContentValues();
+                        values.put("IDEA_NAME", name);
+                        values.put("IDEA_CATEGORY", category);
+                        values.put("IDEA_IMAGE", imageURL);
+                        values.put("IDEA_NOTE", mtext);
+                        db.insert("SAVED_IDEAS", "IDEA_NOTE", values);
                         //setImageResource();
                     }
                 });

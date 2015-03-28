@@ -135,6 +135,8 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         @Override
         public Fragment getItem(int position) {
             Bundle b1 = new Bundle();
+            b1.putString("name", ideasList.get(position).getName());
+            b1.putString("category", ideasList.get(position).getCategory());
             b1.putString("image", ideasList.get(position).getImage());
             ScreenSlidePageFragment frag = new ScreenSlidePageFragment();
             frag.setArguments(b1);
