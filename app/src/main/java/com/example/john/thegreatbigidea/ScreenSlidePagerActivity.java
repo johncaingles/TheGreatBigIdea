@@ -25,6 +25,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
      * The number of pages (wizard steps) to show in this demo.
      */
     private int numIdeas;
+    private static final int LOOPS_COUNT = 50;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -50,6 +51,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+        mPager.setCurrentItem(numIdeas * getLoopCount() / 2); // set current item in the adapter to middle
     }
 
     @Override
@@ -130,6 +132,11 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
             removeIdeas("Alron Senpai");
     }
 
+    public int getLoopCount()
+    {
+        return LOOPS_COUNT;
+    }
+
     public void removeIdeas(String category){
         Iterator<Idea> itr = ideasList.iterator();
         while (itr.hasNext()) {
@@ -152,18 +159,36 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            Bundle b1 = new Bundle();
-            b1.putString("name", ideasList.get(position).getName());
-            b1.putString("category", ideasList.get(position).getCategory());
-            b1.putString("image", ideasList.get(position).getImage());
-            ScreenSlidePageFragment frag = new ScreenSlidePageFragment();
-            frag.setArguments(b1);
-            return frag;
+
+            if (ideasList != null && ideasList.size() > 0)
+            {
+                position = position % ideasList.size(); // use modulo for infinite cycling
+                Bundle b1 = new Bundle();
+                b1.putString("name", ideasList.get(position).getName());
+                b1.putString("category", ideasList.get(position).getCategory());
+                b1.putString("image", ideasList.get(position).getImage());
+                ScreenSlidePageFragment frag = new ScreenSlidePageFragment();
+                frag.setArguments(b1);
+                return frag;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         @Override
         public int getCount() {
-            return numIdeas;
+
+            if (ideasList != null && ideasList.size() > 0)
+            {
+                return ideasList.size()*LOOPS_COUNT; // simulate infinite by big number of products
+            }
+            else
+            {
+                return 1;
+            }
         }
+
     }
 }
